@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> VERTEX NOTIFY </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            height: 100%;
+            width: 250px;
+            background-color: #2c3e50; /* Sidebar color */
+            padding-top: 50px;
+            transition: 0.3s;
+            z-index: 2;
+        }
+
+        #toggleSidebarBtn {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background-color: #2c3e50; /* Button color */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+            z-index: 3;
+        }
+
+        #toggleSidebarBtn:hover {
+            background-color: #34495e; /* Darker button color on hover */
+        }
+
+        .sidebar-btn {
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            width: 100%;
+            text-align: left;
+            color: #ecf0f1; /* Text color */
+            margin-bottom: 10px;
+            background-color: #2c3e50; /* Button color */
+        }
+
+        .sidebar-btn:hover {
+            background-color: #34495e; /* Darker button color on hover */
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff; /* Content background color */
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            width: 80%;
+            margin: 50px auto; /* Center content */
+            z-index: 1;
+        }
+
+        .college-logo {
+            width: 80px; /* Adjust logo size */
+            height: 80px; /* Adjust logo size */
+            margin-bottom: 20px;
+        }
+
+        .header {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .sub-header {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .watermark {
+            color: #888;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-btn {
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            width: 100%;
+            text-align: left;
+            color: #ecf0f1; /* Text color */
+            margin-bottom: 10px;
+            background-color: #2c3e50; /* Button color */
+        }
+
+        .login-btn:hover {
+            background-color: #34495e; /* Darker button color on hover */
+        }
+
+        @media only screen and (max-width: 768px) {
+            #sidebar {
+                left: -260px;
+            }
+
+            #toggleSidebarBtn {
+                left: 10px;
+            }
+
+            .container {
+                margin: 50px 10px; /* Adjust margin for content area */
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <button class="sidebar-btn" onclick="location.href='index.html'">
+            <i class="fas fa-home"></i> Home
+        </button>
+        <button class="sidebar-btn" onclick="location.href='events.php'">
+            <i class="fas fa-calendar-alt"></i> Events
+        </button>
+        <button class="sidebar-btn" onclick="location.href='day_order.php'">
+            <i class="fas fa-calendar-day"></i> Today's Day Order
+        </button>
+        <button class="sidebar-btn" onclick="location.href='next_order.php'">
+            <i class="fas fa-search"></i> Search Day Order
+        </button>
+        <button class="login-btn" onclick="location.href='student_login.php'">
+            <i class="fas fa-sign-in-alt"></i> Student Login
+        </button>
+        <button class="login-btn" onclick="location.href='staff_login.php'">
+            <i class="fas fa-sign-in-alt"></i> Staff Login
+        </button>
+    </div>
+    <button id="toggleSidebarBtn" onclick="toggleSidebar()">☰</button>
+
+    <div class="container">
+        <img src="./picture/ngplogo.png" alt="College Logo" class="college-logo">
+        <div class="header">Dr.N.G.P. Arts and Science College</div>
+        <div class="sub-header">Empowering Minds, Enriching Lives</div>
+        <div class="btn-container">
+            <!-- Content goes here -->
+        </div>
+        <p class="watermark">Developed by Sedhuvignesh M<br>Guided by Dr.A.Adhiselvam & Dr.R.Praba<br>Department Of Information Technology</p>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var sidebarBtn = document.getElementById('toggleSidebarBtn');
+
+            if (sidebar.style.left === '-260px') {
+                sidebar.style.left = '0';
+                sidebarBtn.style.left = '250px';
+            } else {
+                sidebar.style.left = '-260px';
+                sidebarBtn.style.left = '10px';
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
